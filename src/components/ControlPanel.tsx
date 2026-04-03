@@ -54,7 +54,7 @@ export default function ControlPanel({ optimized, lang, onLangChange, onOptimize
             <label className="text-xs font-medium text-grey-600">{t(lang, 'containers')}</label>
             <span className="text-xs font-bold text-grey-900">{containers}</span>
           </div>
-          <input type="range" min={5} max={50} value={containers}
+          <input type="range" min={10} max={500} step={10} value={containers}
             onChange={(e) => setContainers(Number(e.target.value))}
             className="w-full h-1.5 bg-grey-200 rounded-full appearance-none cursor-pointer accent-evreka-400" />
         </div>
