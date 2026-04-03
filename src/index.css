@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* Evreka Green */
+  --color-evreka-25: #e1f5e0;
+  --color-evreka-50: #c3ebc0;
+  --color-evreka-100: #a4e2a1;
+  --color-evreka-200: #86d882;
+  --color-evreka-300: #68ce62;
+  --color-evreka-400: #4ac443;
+  --color-evreka-500: #3ba935;
+  --color-evreka-600: #369b31;
+  --color-evreka-700: #318d2c;
+  --color-evreka-800: #2c7f28;
+  --color-evreka-900: #277123;
+
+  /* Dark Blue */
+  --color-navy-25: #fbfdff;
+  --color-navy-50: #f7faff;
+  --color-navy-100: #f5f7ff;
+  --color-navy-200: #e2e7f5;
+  --color-navy-300: #c8cee0;
+  --color-navy-400: #adb4cb;
+  --color-navy-500: #878ea8;
+  --color-navy-600: #535a72;
+  --color-navy-700: #414f6a;
+  --color-navy-800: #2f4362;
+  --color-navy-900: #0b2b51;
+
+  /* Grey */
+  --color-grey-25: #fcfcfd;
+  --color-grey-50: #f9fafb;
+  --color-grey-100: #f2f4f7;
+  --color-grey-200: #eaecf0;
+  --color-grey-300: #d0d5dd;
+  --color-grey-400: #98a2b3;
+  --color-grey-500: #667085;
+  --color-grey-600: #475467;
+  --color-grey-700: #344054;
+  --color-grey-800: #1d2939;
+  --color-grey-900: #101828;
+
+  /* Red */
+  --color-danger-25: #fbe6e6;
+  --color-danger-50: #f7cecd;
+  --color-danger-100: #f3b5b4;
+  --color-danger-200: #ef9c9a;
+  --color-danger-300: #eb8381;
+  --color-danger-400: #e76b68;
+  --color-danger-500: #e3524f;
+  --color-danger-600: #e03c39;
+  --color-danger-700: #dc2723;
+  --color-danger-800: #c62320;
+  --color-danger-900: #b01f1c;
+
+  /* Orange */
+  --color-warning-25: #fff3da;
+  --color-warning-50: #ffe6b6;
+  --color-warning-100: #ffda91;
+  --color-warning-200: #ffcd6d;
+  --color-warning-300: #ffc148;
+  --color-warning-400: #ffb524;
+  --color-warning-500: #fea800;
+  --color-warning-600: #e99a00;
+  --color-warning-700: #d48c00;
+  --color-warning-800: #bf7e00;
+  --color-warning-900: #a97000;
+
+  /* Blue */
+  --color-info-25: #ddf2fc;
+  --color-info-50: #bbe5fa;
+  --color-info-100: #99d8f7;
+  --color-info-200: #78cbf5;
+  --color-info-300: #56bef2;
+  --color-info-400: #34b1f0;
+  --color-info-500: #12a4ed;
+  --color-info-600: #1096d9;
+  --color-info-700: #0f89c6;
+  --color-info-800: #0e7bb2;
+  --color-info-900: #0c6d9e;
+}
+
+body {
+  margin: 0;
+  background: var(--color-grey-50);
+}
+
+@keyframes smogFloat {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-45%, -55%) scale(1.15);
+    opacity: 0.7;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popupSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(74, 196, 67, 0.4), 0 0 60px rgba(74, 196, 67, 0.15), 0 8px 32px rgba(0,0,0,0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(74, 196, 67, 0.6), 0 0 80px rgba(74, 196, 67, 0.25), 0 8px 32px rgba(0,0,0,0.2);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pinPulse {
+  0%, 100% {
+    box-shadow: 0 0 4px rgba(227, 82, 79, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 12px rgba(227, 82, 79, 0.8);
+  }
+}
