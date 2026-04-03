@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { interpolatePath, type RoadPoint } from '../constants/roads';
+import { type RoadPoint } from '../constants/roads';
 
 interface Route {
   truck: string;

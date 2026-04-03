@@ -72,7 +72,6 @@ type RoutePhase = 'pre' | 'post';
 export default function MapEditor({ onClose }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [containers, setContainers] = useState<Container[]>(INITIAL_CONTAINERS);
-  const [roads, setRoads] = useState<RoadPoint[][]>([]);
   const [currentRoad, setCurrentRoad] = useState<RoadPoint[]>([]);
   const [mode, setMode] = useState<Mode>('edit');
   const [containerColor, setContainerColor] = useState<'red' | 'orange'>('red');
@@ -101,8 +100,6 @@ export default function MapEditor({ onClose }: Props) {
 
   const activeRoutes = routePhase === 'pre' ? preRoutes : postRoutes;
   const setActiveRoutes = routePhase === 'pre' ? setPreRoutes : setPostRoutes;
-  const routeColors = routePhase === 'pre' ? PRE_ROUTE_COLORS : POST_ROUTE_COLORS;
-
   useEffect(() => {
     if (currentTruckPath.length < 2) { setPreviewPos(null); return; }
     const path = currentTruckPath;
@@ -155,7 +152,7 @@ export default function MapEditor({ onClose }: Props) {
     else if (mode === 'truck') setCurrentTruckPath((prev) => [...prev, pt]);
   }, [mode, containerColor, containerType, getPercent]);
 
-  const finishRoad = () => { if (currentRoad.length >= 2) setRoads((prev) => [...prev, currentRoad]); setCurrentRoad([]); };
+  const finishRoad = () => { setCurrentRoad([]); };
 
   const finishTruckRoute = () => {
     if (currentTruckPath.length >= 2) {
@@ -167,7 +164,7 @@ export default function MapEditor({ onClose }: Props) {
 
   const undoLast = () => {
     if (mode === 'container') setContainers((prev) => prev.slice(0, -1));
-    else if (mode === 'road') { if (currentRoad.length > 0) setCurrentRoad((prev) => prev.slice(0, -1)); else setRoads((prev) => prev.slice(0, -1)); }
+    else if (mode === 'road') { if (currentRoad.length > 0) setCurrentRoad((prev) => prev.slice(0, -1)); }
     else if (mode === 'truck') { if (currentTruckPath.length > 0) setCurrentTruckPath((prev) => prev.slice(0, -1)); else setActiveRoutes((prev) => prev.slice(0, -1)); }
   };
 
@@ -190,10 +187,6 @@ export default function MapEditor({ onClose }: Props) {
   const copyContainers = () => {
     const code = containers.map((c) => `  { x: ${c.x}, y: ${c.y}, type: '${c.type}', color: '${c.color}' },`).join('\n');
     navigator.clipboard.writeText(`[\n${code}\n]`); setCopied('containers'); setTimeout(() => setCopied(''), 2000);
-  };
-  const copyRoads = () => {
-    const code = roads.map((road, i) => `  // Road ${i + 1}\n  [\n${road.map((p) => `    { x: ${p.x}, y: ${p.y} },`).join('\n')}\n  ],`).join('\n');
-    navigator.clipboard.writeText(`[\n${code}\n]`); setCopied('roads'); setTimeout(() => setCopied(''), 2000);
   };
   const copyTruckRoutes = (routes: EditorTruckRoute[], label: string) => {
     const code = routes.map((r) =>
