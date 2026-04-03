@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import type { ContainerType } from './WasteContainer';
+import { asset } from '../constants/assets';
 import { preOptRoutes, postOptRoutes, type TruckRoute } from '../constants/roads';
 
 interface Container {
@@ -26,16 +27,16 @@ interface Props {
 }
 
 const CONTAINER_TYPES: { value: ContainerType; label: string; img: string }[] = [
-  { value: 'Trash1', label: 'Skip', img: '/Trash1.png' },
-  { value: 'Trush1', label: 'Wheelie', img: '/Trush1.png' },
-  { value: 'Trush4', label: 'Large', img: '/Trush4.png' },
-  { value: 'Group', label: 'Green Bin', img: '/Group.png' },
+  { value: 'Trash1', label: 'Skip', img: asset('Trash1.png') },
+  { value: 'Trush1', label: 'Wheelie', img: asset('Trush1.png') },
+  { value: 'Trush4', label: 'Large', img: asset('Trush4.png') },
+  { value: 'Group', label: 'Green Bin', img: asset('Group.png') },
 ];
 
 const TRUCK_OPTIONS: { value: 'Truck1' | 'Truck2' | 'Truck3'; label: string; img: string }[] = [
-  { value: 'Truck1', label: 'Compactor', img: '/Truck1.png' },
-  { value: 'Truck2', label: 'Sweeper', img: '/Truck2.png' },
-  { value: 'Truck3', label: 'Flatbed', img: '/Truck3.png' },
+  { value: 'Truck1', label: 'Compactor', img: asset('Truck1.png') },
+  { value: 'Truck2', label: 'Sweeper', img: asset('Truck2.png') },
+  { value: 'Truck3', label: 'Flatbed', img: asset('Truck3.png') },
 ];
 
 const PRE_ROUTE_COLORS = ['#e3524f', '#dc2723', '#c62320', '#b01f1c', '#fea800', '#d48c00'];
@@ -389,7 +390,7 @@ export default function MapEditor({ onClose }: Props) {
       {/* Map */}
       <main className="flex-1 relative bg-grey-50 overflow-hidden">
         <div ref={containerRef} className={`relative w-full h-full ${mode === 'edit' ? 'cursor-default' : 'cursor-crosshair'}`} onClick={handleClick}>
-          <img src="/city-bg.png" alt="City map" className="w-full h-full object-cover" draggable={false} />
+          <img src={asset('city-bg.png')} alt="City map" className="w-full h-full object-cover" draggable={false} />
 
           {/* Containers */}
           {containers.map((c, i) => (
@@ -402,7 +403,7 @@ export default function MapEditor({ onClose }: Props) {
                 <div className="w-3.5 h-3.5 rounded-full border-2 border-white" style={{ backgroundColor: PIN_COLORS[c.color], boxShadow: `0 1px 4px ${PIN_COLORS[c.color]}80` }} />
                 <div className="w-0.5 h-2.5" style={{ backgroundColor: PIN_COLORS[c.color] }} />
               </div>
-              <img src={`/${c.type}.png`} alt={c.type} className="block w-8 h-8 object-contain" draggable={false} />
+              <img src={asset(`${c.type}.png`)} alt={c.type} className="block w-8 h-8 object-contain" draggable={false} />
             </div>
           ))}
 
@@ -445,7 +446,7 @@ export default function MapEditor({ onClose }: Props) {
           {/* Truck preview */}
           {mode === 'truck' && previewPos && (
             <div className="absolute pointer-events-none" style={{ left: `${previewPos.x}%`, top: `${previewPos.y}%`, transform: 'translate(-50%, -50%)', zIndex: 30 }}>
-              <img src={`/${selectedTruck}.png`} alt="preview" className="w-10 h-8 object-contain opacity-80" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))' }} />
+              <img src={asset(`${selectedTruck}.png`)} alt="preview" className="w-10 h-8 object-contain opacity-80" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))' }} />
             </div>
           )}
 

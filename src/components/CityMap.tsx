@@ -1,3 +1,4 @@
+import { asset } from '../constants/assets';
 import WasteContainer from './WasteContainer';
 import type { ContainerType } from './WasteContainer';
 import Truck from './Truck';
@@ -36,13 +37,13 @@ export default function CityMap({ optimized = false }: Props) {
     <div className="relative w-full h-full overflow-hidden">
       {/* City background — dirty version underneath, clean on top */}
       <img
-        src="/city-bg-dirty.png"
+        src={asset('city-bg-dirty.png')}
         alt="Polluted city"
         className="absolute inset-0 w-full h-full object-cover"
         draggable={false}
       />
       <img
-        src="/city-bg.png"
+        src={asset('city-bg.png')}
         alt="Clean city"
         className="absolute inset-0 w-full h-full object-cover"
         draggable={false}

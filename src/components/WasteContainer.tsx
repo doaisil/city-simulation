@@ -1,3 +1,5 @@
+import { asset } from '../constants/assets';
+
 export type ContainerType = 'Trash1' | 'Trush1' | 'Trush4' | 'Group';
 
 interface Props {
@@ -61,7 +63,7 @@ export default function WasteContainer({ x, y, type, color, optimized = false }:
 
       {/* Container image */}
       <img
-        src={`/${type}.png`}
+        src={asset(`${type}.png`)}
         alt={type}
         width={size.w}
         height={size.h}

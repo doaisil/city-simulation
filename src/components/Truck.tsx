@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { interpolatePath, type RoadPoint } from '../constants/roads';
+import { asset } from '../constants/assets';
 
 interface Props {
   truck: 'Truck1' | 'Truck2' | 'Truck3';
@@ -59,7 +60,7 @@ export default function Truck({ truck, path, speed, loop = true }: Props) {
       }}
     >
       <img
-        src={`/${truck}.png`}
+        src={asset(`${truck}.png`)}
         alt={truck}
         width={size.w}
         height={size.h}

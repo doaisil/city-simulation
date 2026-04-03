@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { asset } from '../constants/assets';
 import KpiCard from './KpiCard';
 import LanguageToggle from './LanguageToggle';
 import { kpis, calculateKpi } from '../constants/kpiData';
@@ -25,7 +26,7 @@ export default function ControlPanel({ optimized, lang, onLangChange, onOptimize
       <div className="p-5 pb-3 border-b border-grey-100">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <img src="/evreka-icon.png" alt="Evreka" className="w-8 h-8 rounded-lg" />
+            <img src={asset('evreka-icon.png')} alt="Evreka" className="w-8 h-8 rounded-lg" />
             <div>
               <h1 className="text-base font-bold text-grey-900 leading-tight">{t(lang, 'brand')}</h1>
               <p className="text-[10px] text-grey-400 font-medium">{t(lang, 'subtitle')}</p>
